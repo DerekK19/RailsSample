@@ -69,7 +69,7 @@ before 'deploy:setup', 'rvm:install_ruby'       # install Ruby and create gemset
 set :keep_releases, 1
 
 set :application, "sample"
-set :repository,  "/Users/derekk/Solutions/Rails/sample"
+set :repository,  "$HOME/Solutions/Rails/sample"
 
 set :scm, :none
 
