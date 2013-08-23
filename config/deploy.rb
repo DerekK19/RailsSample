@@ -1,62 +1,6 @@
 require "rvm/capistrano"
 require "capistrano/ext/multistage"
-require "colored"
-
-logger.level = Logger::IMPORTANT               # make capistrano quiet by default!
-
-STDOUT.sync
-before "deploy:update_code" do
-    print "Updating Code........"
-    start_spinner()
-end
-
-after "deploy:update_code" do
-    stop_spinner()
-    puts "Done.".green
-end
-
-before "deploy:cleanup" do
-    print "Cleaning Up.........."
-    start_spinner()
-end
-
-after "deploy:cleanup" do
-    stop_spinner()
-    puts "Done.".green
-end
-
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
-
-@spinner_running = false
-@chars = ['|', '/', '-', '\\']
-@spinner = Thread.new do
-  loop do
-    unless @spinner_running
-      Thread.stop
-    end
-    print @chars[0]
-    sleep(0.1)
-    print "\b"
-    @chars.push @chars.shift
-  end
-end
-
-def start_spinner
-  @spinner_running = true
-  @spinner.wakeup
-end
-
-# stops the spinner and backspaces over last displayed character
-def stop_spinner
-  @spinner_running = false
-  print "\b"
-end
+load "config/deploy/progress"
 
 set :stages, ["staging", "production"]
 set :default_stage, "staging"
@@ -81,3 +25,11 @@ role :db,  "localhost", :primary => true		# This is where Rails migrations will 
 role :db,  "localhost"
 
 after "deploy:restart", "deploy:cleanup"
+
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end
