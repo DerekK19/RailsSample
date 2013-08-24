@@ -17,14 +17,16 @@ set :repository,  "$HOME/Solutions/Rails/sample"
 
 set :scm, :none
 
+ssh_options[:forward_agent] = true
+
 set :normalize_asset_timestamps, false			# disable asset timestamps update, since rails doesn't use these
+
+after "deploy:restart", "deploy:cleanup"        # clean up old releases on each deploy
 
 role :web, "localhost"                          # Your HTTP server, Apache/etc
 role :app, "localhost"                          # This may be the same as your `Web` server
 role :db,  "localhost", :primary => true		# This is where Rails migrations will run
 role :db,  "localhost"
-
-after "deploy:restart", "deploy:cleanup"
 
 namespace :deploy do
   task :start do ; end
