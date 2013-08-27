@@ -17,6 +17,13 @@ body
   background-color:#fef3a1;
 }
 
+/* Style for header - with centred content */
+h1.header
+{
+	width: 100%;
+	text-align: center;
+}
+
 /* Styles for page footer - with left and right hand components */
 div.footer
 {

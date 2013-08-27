@@ -75,9 +75,4 @@ set :scm, :none
 
 set :normalize_asset_timestamps, false			# disable asset timestamps update, since rails doesn't use these
 
-role :web, "localhost"                          # Your HTTP server, Apache/etc
-role :app, "localhost"                          # This may be the same as your `Web` server
-role :db,  "localhost", :primary => true		# This is where Rails migrations will run
-role :db,  "localhost"
-
 after "deploy:restart", "deploy:cleanup"
