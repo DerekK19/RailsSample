@@ -8,7 +8,15 @@
 </head>
 <body>
 
+<h1>Sample Rails Application</h1>
+
 <%= yield %>
 
+ <div class="footer">
+	<div class="left-footer">Copyright &copy;<%= Time.now.year.to_s %> Derek Knight</div>
+	<div class="right-footer"><%= link_to "Sample", controller: "welcome" %> Powered by Ruby on Rails (<%= Rails::env =%>). [Ruby <%= RUBY_VERSION %>, Rails <%= Rails::VERSION::STRING%>]</div>
+ </div>
+
 </body>
+
 </html>

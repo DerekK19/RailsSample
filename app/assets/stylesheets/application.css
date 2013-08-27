@@ -11,3 +11,43 @@
  *= require_self
  *= require_tree .
  */
+
+body
+{
+  background-color:#fef3a1;
+}
+
+/* Styles for page footer - with left and right hand components */
+div.footer
+{
+	width: 97%;
+	position: absolute;
+	bottom: 30px;
+}
+
+div.footer a
+{
+  font-family: verdana, arial, helvetica, sans-serif;
+  color: #999;
+}
+
+div.left-footer
+{
+  font-family: verdana, arial, helvetica, sans-serif;
+  position: absolute;
+  left: 0;
+  color: #999;
+  width: 50%;
+  font-size: 11px;
+}
+
+div.right-footer
+{
+  font-family: verdana, arial, helvetica, sans-serif;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  color: #999;
+  width: 50%;
+  font-size: 11px;
+}
