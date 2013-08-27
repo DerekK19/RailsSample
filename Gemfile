@@ -43,6 +43,7 @@ end
 
 gem 'rvm-capistrano'
 
+# Use colored for capistrano progress display
 gem 'colored'
 
 # Use debugger
