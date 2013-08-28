@@ -28,6 +28,8 @@ role :app, "localhost"                          # This may be the same as your `
 role :db,  "localhost", :primary => true		# This is where Rails migrations will run
 role :db,  "localhost"
 
+after "deploy", "deploy:migrate"
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end

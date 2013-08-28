@@ -13,32 +13,27 @@ module ApplicationHelper
 
 	def navbar_items
 		[
-			['Elements', 'elements'],
-			['Photos', 'photos'],
-			['Weather', 'weather'],
+			['Posts', 'posts'],
 		]
 	end
 
 	def current_navbar
-	'Elements'
+	'Posts'
 	end
 
 	def current_header
-	'Elements On Rails'
+	'Posts On Rails'
 	end
 
 	def machine_menu_items
 		[
-			'rails',
-			'macrails',
-			'devmacrails'
+			'localhost',
+			'localHost:8000'
 		]
 	end
 	def left_menu_items
 		[
-			['Elements', '/elements'],
-			['Series', '/series'],
-			['Alternative Names', '/alternative_names'],
+			['Posts', '/posts'],
 		]
 	end
 
@@ -75,7 +70,10 @@ module ApplicationHelper
 	end
 
 	def footer
-	    l = link_to 'Rails', controller: 'rails/info', action: 'properties'
+		l = 'Rails'
+	    if Rails::env == 'development'
+	      l = link_to 'Rails', controller: 'rails/info', action: 'properties'
+		end
 		'
 		  <div class="footer">
 			<div class="left-footer">Copyright &copy;' + Time.now.year.to_s + ' Derek Knight</div>
