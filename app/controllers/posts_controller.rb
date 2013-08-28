@@ -30,7 +30,7 @@ def show
 end
 
 def index
-  @posts = Post.all
+  @posts = Post.display_data(params[:page], params[:sort])
 end
 
 def update

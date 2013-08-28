@@ -21,9 +21,6 @@ ssh_options[:forward_agent] = true
 
 set :normalize_asset_timestamps, false			# disable asset timestamps update, since rails doesn't use these
 
-<<<<<<< HEAD
-after "deploy:restart", "deploy:cleanup"
-=======
 after "deploy:restart", "deploy:cleanup"        # clean up old releases on each deploy
 
 role :web, "localhost"                          # Your HTTP server, Apache/etc
@@ -38,4 +35,4 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
->>>>>>> 5fa019bdf8f40f5db48049eb9c518f7e30cf9561
+
