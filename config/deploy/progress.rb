@@ -1,6 +1,6 @@
 require "colored"
 
-#logger.level = Logger::IMPORTANT               # make capistrano quiet by default!
+logger.level = Logger::IMPORTANT               # make capistrano quiet by default!
 
 STDOUT.sync
 before "deploy:setup" do
